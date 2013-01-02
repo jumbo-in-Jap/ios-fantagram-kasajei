@@ -1,0 +1,7 @@
+#Xcode
+project.xcworkspace/
+xcuserdata/
+build/
+
+*.pbxproj -crlf -diff -merge
+
