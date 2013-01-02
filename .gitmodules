@@ -1,3 +1,6 @@
 [submodule "GPUImage"]
 	path = GPUImage
 	url = git://github.com/BradLarson/GPUImage.git
+[submodule "UIKitHelper"]
+	path = UIKitHelper
+	url = git@github.com:kasajei/UIKitHelper.git

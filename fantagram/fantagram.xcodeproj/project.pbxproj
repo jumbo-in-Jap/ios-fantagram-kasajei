@@ -23,6 +23,23 @@
 		932646A216944DEC007C72F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9326467D16944DEC007C72F8 /* Foundation.framework */; };
 		932646AA16944DEC007C72F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 932646A816944DEC007C72F8 /* InfoPlist.strings */; };
 		932646AD16944DEC007C72F8 /* fantagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646AC16944DEC007C72F8 /* fantagramTests.m */; };
+		932646C416948767007C72F8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C316948767007C72F8 /* CoreMedia.framework */; };
+		932646C61694876E007C72F8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C51694876E007C72F8 /* CoreVideo.framework */; };
+		932646C816948776007C72F8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C716948776007C72F8 /* OpenGLES.framework */; };
+		932646CA1694877F007C72F8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C91694877E007C72F8 /* AVFoundation.framework */; };
+		932646CC16948786007C72F8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646CB16948786007C72F8 /* QuartzCore.framework */; };
+		932646E316948AE7007C72F8 /* NSMutableDictionary+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646CF16948AE7007C72F8 /* NSMutableDictionary+Helper.m */; };
+		932646E416948AE7007C72F8 /* NSUserDefaults+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646D116948AE7007C72F8 /* NSUserDefaults+Helper.m */; };
+		932646E516948AE7007C72F8 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646D316948AE7007C72F8 /* UIButton+Helper.m */; };
+		932646E616948AE7007C72F8 /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646D516948AE7007C72F8 /* UIImage+Helper.m */; };
+		932646E716948AE7007C72F8 /* UIImage+PhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646D716948AE7007C72F8 /* UIImage+PhotoHelper.m */; };
+		932646E816948AE7007C72F8 /* UIImageView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646D916948AE7007C72F8 /* UIImageView+Helper.m */; };
+		932646E916948AE7007C72F8 /* UILabel+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646DC16948AE7007C72F8 /* UILabel+Helper.m */; };
+		932646EA16948AE7007C72F8 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646DE16948AE7007C72F8 /* UIView+Helper.m */; };
+		932646EB16948AE7007C72F8 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646E016948AE7007C72F8 /* UIViewController+Helper.m */; };
+		932646EC16948AE7007C72F8 /* UIWebView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646E216948AE7007C72F8 /* UIWebView+Helper.m */; };
+		932646EF16948C37007C72F8 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 932646EE16948C37007C72F8 /* sample.jpg */; };
+		93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C0169485D6007C72F8 /* libGPUImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +49,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9326467616944DEC007C72F8;
 			remoteInfo = fantagram;
+		};
+		932646BF169485D6007C72F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 932646B6169485D6007C72F8 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		932646C1169485D6007C72F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 932646B6169485D6007C72F8 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -58,6 +89,34 @@
 		932646A916944DEC007C72F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		932646AB16944DEC007C72F8 /* fantagramTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fantagramTests.h; sourceTree = "<group>"; };
 		932646AC16944DEC007C72F8 /* fantagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fantagramTests.m; sourceTree = "<group>"; };
+		932646B6169485D6007C72F8 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		932646C316948767007C72F8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		932646C51694876E007C72F8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		932646C716948776007C72F8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		932646C91694877E007C72F8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		932646CB16948786007C72F8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		932646CE16948AE7007C72F8 /* NSMutableDictionary+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Helper.h"; sourceTree = "<group>"; };
+		932646CF16948AE7007C72F8 /* NSMutableDictionary+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Helper.m"; sourceTree = "<group>"; };
+		932646D016948AE7007C72F8 /* NSUserDefaults+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Helper.h"; sourceTree = "<group>"; };
+		932646D116948AE7007C72F8 /* NSUserDefaults+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Helper.m"; sourceTree = "<group>"; };
+		932646D216948AE7007C72F8 /* UIButton+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Helper.h"; sourceTree = "<group>"; };
+		932646D316948AE7007C72F8 /* UIButton+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helper.m"; sourceTree = "<group>"; };
+		932646D416948AE7007C72F8 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
+		932646D516948AE7007C72F8 /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
+		932646D616948AE7007C72F8 /* UIImage+PhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PhotoHelper.h"; sourceTree = "<group>"; };
+		932646D716948AE7007C72F8 /* UIImage+PhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PhotoHelper.m"; sourceTree = "<group>"; };
+		932646D816948AE7007C72F8 /* UIImageView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Helper.h"; sourceTree = "<group>"; };
+		932646D916948AE7007C72F8 /* UIImageView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Helper.m"; sourceTree = "<group>"; };
+		932646DA16948AE7007C72F8 /* UIKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitHelper.h; sourceTree = "<group>"; };
+		932646DB16948AE7007C72F8 /* UILabel+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Helper.h"; sourceTree = "<group>"; };
+		932646DC16948AE7007C72F8 /* UILabel+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Helper.m"; sourceTree = "<group>"; };
+		932646DD16948AE7007C72F8 /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
+		932646DE16948AE7007C72F8 /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
+		932646DF16948AE7007C72F8 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
+		932646E016948AE7007C72F8 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
+		932646E116948AE7007C72F8 /* UIWebView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Helper.h"; sourceTree = "<group>"; };
+		932646E216948AE7007C72F8 /* UIWebView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Helper.m"; sourceTree = "<group>"; };
+		932646EE16948C37007C72F8 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +124,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */,
+				932646CC16948786007C72F8 /* QuartzCore.framework in Frameworks */,
+				932646CA1694877F007C72F8 /* AVFoundation.framework in Frameworks */,
+				932646C816948776007C72F8 /* OpenGLES.framework in Frameworks */,
+				932646C61694876E007C72F8 /* CoreVideo.framework in Frameworks */,
+				932646C416948767007C72F8 /* CoreMedia.framework in Frameworks */,
 				9326467C16944DEC007C72F8 /* UIKit.framework in Frameworks */,
 				9326467E16944DEC007C72F8 /* Foundation.framework in Frameworks */,
 				9326468016944DEC007C72F8 /* CoreGraphics.framework in Frameworks */,
@@ -87,6 +152,8 @@
 		9326466C16944DEB007C72F8 = {
 			isa = PBXGroup;
 			children = (
+				932646ED16948C37007C72F8 /* Resources */,
+				932646CD16948AE7007C72F8 /* UIKitHelper */,
 				9326468116944DEC007C72F8 /* fantagram */,
 				932646A516944DEC007C72F8 /* fantagramTests */,
 				9326467A16944DEC007C72F8 /* Frameworks */,
@@ -106,6 +173,12 @@
 		9326467A16944DEC007C72F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				932646CB16948786007C72F8 /* QuartzCore.framework */,
+				932646C91694877E007C72F8 /* AVFoundation.framework */,
+				932646C716948776007C72F8 /* OpenGLES.framework */,
+				932646C51694876E007C72F8 /* CoreVideo.framework */,
+				932646C316948767007C72F8 /* CoreMedia.framework */,
+				932646B6169485D6007C72F8 /* GPUImage.xcodeproj */,
 				9326467B16944DEC007C72F8 /* UIKit.framework */,
 				9326467D16944DEC007C72F8 /* Foundation.framework */,
 				9326467F16944DEC007C72F8 /* CoreGraphics.framework */,
@@ -158,6 +231,53 @@
 				932646A816944DEC007C72F8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		932646B7169485D6007C72F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				932646C0169485D6007C72F8 /* libGPUImage.a */,
+				932646C2169485D6007C72F8 /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		932646CD16948AE7007C72F8 /* UIKitHelper */ = {
+			isa = PBXGroup;
+			children = (
+				932646CE16948AE7007C72F8 /* NSMutableDictionary+Helper.h */,
+				932646CF16948AE7007C72F8 /* NSMutableDictionary+Helper.m */,
+				932646D016948AE7007C72F8 /* NSUserDefaults+Helper.h */,
+				932646D116948AE7007C72F8 /* NSUserDefaults+Helper.m */,
+				932646D216948AE7007C72F8 /* UIButton+Helper.h */,
+				932646D316948AE7007C72F8 /* UIButton+Helper.m */,
+				932646D416948AE7007C72F8 /* UIImage+Helper.h */,
+				932646D516948AE7007C72F8 /* UIImage+Helper.m */,
+				932646D616948AE7007C72F8 /* UIImage+PhotoHelper.h */,
+				932646D716948AE7007C72F8 /* UIImage+PhotoHelper.m */,
+				932646D816948AE7007C72F8 /* UIImageView+Helper.h */,
+				932646D916948AE7007C72F8 /* UIImageView+Helper.m */,
+				932646DA16948AE7007C72F8 /* UIKitHelper.h */,
+				932646DB16948AE7007C72F8 /* UILabel+Helper.h */,
+				932646DC16948AE7007C72F8 /* UILabel+Helper.m */,
+				932646DD16948AE7007C72F8 /* UIView+Helper.h */,
+				932646DE16948AE7007C72F8 /* UIView+Helper.m */,
+				932646DF16948AE7007C72F8 /* UIViewController+Helper.h */,
+				932646E016948AE7007C72F8 /* UIViewController+Helper.m */,
+				932646E116948AE7007C72F8 /* UIWebView+Helper.h */,
+				932646E216948AE7007C72F8 /* UIWebView+Helper.m */,
+			);
+			name = UIKitHelper;
+			path = ../UIKitHelper/UIKitHelper;
+			sourceTree = "<group>";
+		};
+		932646ED16948C37007C72F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				932646EE16948C37007C72F8 /* sample.jpg */,
+			);
+			name = Resources;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +338,12 @@
 			mainGroup = 9326466C16944DEB007C72F8;
 			productRefGroup = 9326467816944DEC007C72F8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 932646B7169485D6007C72F8 /* Products */;
+					ProjectRef = 932646B6169485D6007C72F8 /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9326467616944DEC007C72F8 /* fantagram */,
@@ -225,6 +351,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		932646C0169485D6007C72F8 /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 932646BF169485D6007C72F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		932646C2169485D6007C72F8 /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = 932646C1169485D6007C72F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9326467516944DEC007C72F8 /* Resources */ = {
@@ -236,6 +379,7 @@
 				9326469016944DEC007C72F8 /* Default@2x.png in Resources */,
 				9326469216944DEC007C72F8 /* Default-568h@2x.png in Resources */,
 				9326469516944DEC007C72F8 /* MainStoryboard.storyboard in Resources */,
+				932646EF16948C37007C72F8 /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +417,16 @@
 				9326468816944DEC007C72F8 /* main.m in Sources */,
 				9326468C16944DEC007C72F8 /* AppDelegate.m in Sources */,
 				9326469816944DEC007C72F8 /* ViewController.m in Sources */,
+				932646E316948AE7007C72F8 /* NSMutableDictionary+Helper.m in Sources */,
+				932646E416948AE7007C72F8 /* NSUserDefaults+Helper.m in Sources */,
+				932646E516948AE7007C72F8 /* UIButton+Helper.m in Sources */,
+				932646E616948AE7007C72F8 /* UIImage+Helper.m in Sources */,
+				932646E716948AE7007C72F8 /* UIImage+PhotoHelper.m in Sources */,
+				932646E816948AE7007C72F8 /* UIImageView+Helper.m in Sources */,
+				932646E916948AE7007C72F8 /* UILabel+Helper.m in Sources */,
+				932646EA16948AE7007C72F8 /* UIView+Helper.m in Sources */,
+				932646EB16948AE7007C72F8 /* UIViewController+Helper.m in Sources */,
+				932646EC16948AE7007C72F8 /* UIWebView+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +531,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fantagram/fantagram-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
 				INFOPLIST_FILE = "fantagram/fantagram-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -388,7 +544,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fantagram/fantagram-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
 				INFOPLIST_FILE = "fantagram/fantagram-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -447,6 +605,7 @@
 				932646B216944DEC007C72F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		932646B316944DEC007C72F8 /* Build configuration list for PBXNativeTarget "fantagramTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +614,7 @@
 				932646B516944DEC007C72F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
