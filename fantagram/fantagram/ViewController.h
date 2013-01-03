@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class GPUImageView;
+
 @interface ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-- (IBAction)pressFilterBtn:(id)sender;
+@property (weak, nonatomic) IBOutlet GPUImageView *imageView;
+- (IBAction)pressSaveBtn:(id)sender;
 @end

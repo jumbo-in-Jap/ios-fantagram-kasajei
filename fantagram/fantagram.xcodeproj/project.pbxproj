@@ -40,6 +40,7 @@
 		932646EC16948AE7007C72F8 /* UIWebView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646E216948AE7007C72F8 /* UIWebView+Helper.m */; };
 		932646EF16948C37007C72F8 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 932646EE16948C37007C72F8 /* sample.jpg */; };
 		93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C0169485D6007C72F8 /* libGPUImage.a */; };
+		93BB07A8169538330047CCAF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BB07A7169538330047CCAF /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		932646E116948AE7007C72F8 /* UIWebView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Helper.h"; sourceTree = "<group>"; };
 		932646E216948AE7007C72F8 /* UIWebView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Helper.m"; sourceTree = "<group>"; };
 		932646EE16948C37007C72F8 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		93BB07A7169538330047CCAF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BB07A8169538330047CCAF /* AssetsLibrary.framework in Frameworks */,
 				93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */,
 				932646CC16948786007C72F8 /* QuartzCore.framework in Frameworks */,
 				932646CA1694877F007C72F8 /* AVFoundation.framework in Frameworks */,
@@ -173,6 +176,7 @@
 		9326467A16944DEC007C72F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93BB07A7169538330047CCAF /* AssetsLibrary.framework */,
 				932646CB16948786007C72F8 /* QuartzCore.framework */,
 				932646C91694877E007C72F8 /* AVFoundation.framework */,
 				932646C716948776007C72F8 /* OpenGLES.framework */,
@@ -533,7 +537,8 @@
 				GCC_PREFIX_HEADER = "fantagram/fantagram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
 				INFOPLIST_FILE = "fantagram/fantagram-Info.plist";
-				OTHER_LDFLAGS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -546,7 +551,8 @@
 				GCC_PREFIX_HEADER = "fantagram/fantagram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
 				INFOPLIST_FILE = "fantagram/fantagram-Info.plist";
-				OTHER_LDFLAGS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
