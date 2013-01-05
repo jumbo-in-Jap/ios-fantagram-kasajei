@@ -10,6 +10,7 @@
 #import "UIKitHelper.h"
 #import "GPUImage.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "GPUImageSelectiveColorFilter.h"
 
 @interface ViewController ()
 @property(nonatomic, strong) GPUImageStillCamera *stillCamera;
@@ -36,38 +37,53 @@
     //// まずフィルターグループを作る。フィルターを一つにまとめることで、あとで画像をつくるときに全部のフィルターがかかった画像が得られる
     self.filterGroup = [[GPUImageFilterGroup alloc] init];
     
-
-    //// スケッチ
-    GPUImageSketchFilter *sketchFilter = [[GPUImageSketchFilter alloc] init];
+    //// 最初のフィルター便宜的に
+    GPUImageFilter *firstFilter = [[GPUImageFilter alloc] init];
     ////// 最初のフィルターには画像サイズを変えるための処理を入れる。これを入れないと画像サイズが大きすぎて、メモリーリークを起こして、アプリが落ちる
-    [sketchFilter forceProcessingAtSize:CGSizeMake(640, 640)];
-    [self.filterGroup addFilter:sketchFilter];
-    //// セピアフィルター
-    GPUImageSepiaFilter *sepiaFilter = [[GPUImageSepiaFilter alloc] init];
-    [self.filterGroup addFilter:sepiaFilter];
-    //// TiltShiftFilter
-    GPUImageTiltShiftFilter *tiltShiftFilter = [[GPUImageTiltShiftFilter alloc] init];
-    [self.filterGroup addFilter:tiltShiftFilter];
+    [firstFilter forceProcessingAtSize:CGSizeMake(640, 640)];
+    [self.filterGroup addFilter:firstFilter];
     
     
-    // フィルター構成
-    // stillCamera → スケッチ
-    [self.stillCamera addTarget:sketchFilter];
-    // stillCamera → スケッチ → セピアフィルター
-    [sketchFilter addTarget:sepiaFilter];
-    // stillCamera → スケッチ → セピアフィルター → TiltShiftFilter
-    [sepiaFilter addTarget:tiltShiftFilter];
-    // stillCamera → スケッチ → セピアフィルター → TiltShiftFilter → imageView
-    [tiltShiftFilter addTarget:self.imageView];
+    // 変更を加えるところ-------------------------------------------
+
+    GPUImageSelectiveColorFilter *selectiveColorFilter = [[GPUImageSelectiveColorFilter alloc] init];
+    [self.filterGroup addTarget:selectiveColorFilter];
+    
+    //-------------------------------------------
+    
+    
+    //// 最後のフィルター便宜的に
+    GPUImageFilter *endFilter = [[GPUImageFilter alloc] init];
+    [self.filterGroup addFilter:endFilter];
     
     
     // フィルターグループの設定
     //// フィルターグループでオリジナルの画像をinputとして持つフィルターを設定する
-    [self.filterGroup setInitialFilters:@[sketchFilter]];
+    [self.filterGroup setInitialFilters:@[firstFilter]];
     //// 一番最後のフィルターを設定する
-    [self.filterGroup setTerminalFilter:tiltShiftFilter];
+    [self.filterGroup setTerminalFilter:endFilter];
     
     
+    
+    
+    // フィルター構成
+    [self.stillCamera addTarget:firstFilter];
+    
+    // 変更を加えるところ-------------------------------------------
+    [firstFilter addTarget:selectiveColorFilter];
+
+    [selectiveColorFilter addTarget:endFilter];
+    //-------------------------------------------
+
+    
+    // フィルター構成終わり
+    [endFilter addTarget:self.imageView];
+    
+    
+    
+    
+    
+
     // stillCameraのキャプチャを開始する
     [self.stillCamera startCameraCapture];
 

@@ -41,6 +41,7 @@
 		932646EF16948C37007C72F8 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 932646EE16948C37007C72F8 /* sample.jpg */; };
 		93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C0169485D6007C72F8 /* libGPUImage.a */; };
 		93BB07A8169538330047CCAF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BB07A7169538330047CCAF /* AssetsLibrary.framework */; };
+		93BB07E51695AE900047CCAF /* GPUImageSelectiveColorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		932646E216948AE7007C72F8 /* UIWebView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Helper.m"; sourceTree = "<group>"; };
 		932646EE16948C37007C72F8 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		93BB07A7169538330047CCAF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		93BB07E31695AE900047CCAF /* GPUImageSelectiveColorFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageSelectiveColorFilter.h; sourceTree = "<group>"; };
+		93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageSelectiveColorFilter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,7 @@
 		9326468116944DEC007C72F8 /* fantagram */ = {
 			isa = PBXGroup;
 			children = (
+				93BB07E11695AE130047CCAF /* GPUImage */,
 				9326468A16944DEC007C72F8 /* AppDelegate.h */,
 				9326468B16944DEC007C72F8 /* AppDelegate.m */,
 				9326469316944DEC007C72F8 /* MainStoryboard.storyboard */,
@@ -282,6 +286,23 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		93BB07E11695AE130047CCAF /* GPUImage */ = {
+			isa = PBXGroup;
+			children = (
+				93BB07E21695AE130047CCAF /* GPUImaeFilter */,
+			);
+			path = GPUImage;
+			sourceTree = "<group>";
+		};
+		93BB07E21695AE130047CCAF /* GPUImaeFilter */ = {
+			isa = PBXGroup;
+			children = (
+				93BB07E31695AE900047CCAF /* GPUImageSelectiveColorFilter.h */,
+				93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */,
+			);
+			path = GPUImaeFilter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +452,7 @@
 				932646EA16948AE7007C72F8 /* UIView+Helper.m in Sources */,
 				932646EB16948AE7007C72F8 /* UIViewController+Helper.m in Sources */,
 				932646EC16948AE7007C72F8 /* UIWebView+Helper.m in Sources */,
+				93BB07E51695AE900047CCAF /* GPUImageSelectiveColorFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
