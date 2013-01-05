@@ -45,9 +45,13 @@
     
     
     // 変更を加えるところ-------------------------------------------
-
+    
+    GPUImageGrayscaleFilter *grayScale = [[GPUImageGrayscaleFilter alloc] init];
+    [self.filterGroup addTarget:grayScale];
     GPUImageSelectiveColorFilter *selectiveColorFilter = [[GPUImageSelectiveColorFilter alloc] init];
     [self.filterGroup addTarget:selectiveColorFilter];
+    GPUImageLightenBlendFilter *screenBlend = [[GPUImageLightenBlendFilter alloc] init];
+    [self.filterGroup addTarget:screenBlend];
     
     //-------------------------------------------
     
@@ -59,7 +63,7 @@
     
     // フィルターグループの設定
     //// フィルターグループでオリジナルの画像をinputとして持つフィルターを設定する
-    [self.filterGroup setInitialFilters:@[firstFilter]];
+    [self.filterGroup setInitialFilters:@[firstFilter,selectiveColorFilter]];
     //// 一番最後のフィルターを設定する
     [self.filterGroup setTerminalFilter:endFilter];
     
@@ -70,9 +74,11 @@
     [self.stillCamera addTarget:firstFilter];
     
     // 変更を加えるところ-------------------------------------------
+    [firstFilter addTarget:grayScale];
     [firstFilter addTarget:selectiveColorFilter];
-
-    [selectiveColorFilter addTarget:endFilter];
+    [selectiveColorFilter addTarget:screenBlend atTextureLocation:1];
+    [grayScale addTarget:screenBlend];
+    [screenBlend addTarget:endFilter];
     //-------------------------------------------
 
     
