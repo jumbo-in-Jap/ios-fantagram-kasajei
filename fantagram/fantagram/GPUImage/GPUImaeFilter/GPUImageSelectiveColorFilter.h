@@ -2,6 +2,8 @@
 
 extern NSString *const kGPUImageSelectiveColorFragmentShaderString;
 
-@interface GPUImageSelectiveColorFilter : GPUImageFilter
-
+@interface GPUImageSelectiveColorFilter : GPUImageFilter{
+    CGFloat hueCenterUniform;
+}
+@property(nonatomic, readwrite) CGFloat hueCenter;
 @end

@@ -9,6 +9,8 @@ NSString *const kGPUImageSelectiveColorFragmentShaderString = SHADER_STRING
  varying vec2 textureCoordinate;
  
  uniform sampler2D inputImageTexture;
+ 
+ uniform highp float hueCenter;
 
  
  void main()
@@ -70,7 +72,7 @@ NSString *const kGPUImageSelectiveColorFragmentShaderString = SHADER_STRING
      
 
      // フィルターここから --------------------------------------
-     highp float center = 0.0;
+     highp float center = hueCenter;
      highp float variance = 15.0;
      
      
@@ -161,8 +163,21 @@ NSString *const kGPUImageSelectiveColorFragmentShaderString = SHADER_STRING
     {
 		return nil;
     }
+    hueCenterUniform = [filterProgram uniformIndex:@"hueCenter"];
+    self.hueCenter = 0.0;
     
     return self;
+}
+
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setHueCenter:(CGFloat)hueCenter
+{
+    _hueCenter = hueCenter;
+    
+    [self setFloat:_hueCenter forUniform:hueCenterUniform program:filterProgram];
 }
 
 

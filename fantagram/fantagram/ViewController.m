@@ -12,7 +12,10 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "GPUImageSelectiveColorFilter.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    // あとで値を変えられるように
+    GPUImageSelectiveColorFilter *selectiveColorFilter;
+}
 @property(nonatomic, strong) GPUImageStillCamera *stillCamera;
 @property(nonatomic, strong) GPUImageFilterGroup *filterGroup;
 @end
@@ -48,10 +51,11 @@
     
     GPUImageGrayscaleFilter *grayScale = [[GPUImageGrayscaleFilter alloc] init];
     [self.filterGroup addTarget:grayScale];
-    GPUImageSelectiveColorFilter *selectiveColorFilter = [[GPUImageSelectiveColorFilter alloc] init];
+    selectiveColorFilter = [[GPUImageSelectiveColorFilter alloc] init];
+    [selectiveColorFilter setHueCenter:180];
     [self.filterGroup addTarget:selectiveColorFilter];
-    GPUImageLightenBlendFilter *screenBlend = [[GPUImageLightenBlendFilter alloc] init];
-    [self.filterGroup addTarget:screenBlend];
+    GPUImageLightenBlendFilter *lightenBlend = [[GPUImageLightenBlendFilter alloc] init];
+    [self.filterGroup addTarget:lightenBlend];
     
     //-------------------------------------------
     
@@ -63,7 +67,7 @@
     
     // フィルターグループの設定
     //// フィルターグループでオリジナルの画像をinputとして持つフィルターを設定する
-    [self.filterGroup setInitialFilters:@[firstFilter,selectiveColorFilter]];
+    [self.filterGroup setInitialFilters:@[firstFilter]];
     //// 一番最後のフィルターを設定する
     [self.filterGroup setTerminalFilter:endFilter];
     
@@ -74,11 +78,20 @@
     [self.stillCamera addTarget:firstFilter];
     
     // 変更を加えるところ-------------------------------------------
+    // ファーストフィルター → グレイスケール
     [firstFilter addTarget:grayScale];
+    // ファーストフィルター → 赤色抽出フィルター
     [firstFilter addTarget:selectiveColorFilter];
-    [selectiveColorFilter addTarget:screenBlend atTextureLocation:1];
-    [grayScale addTarget:screenBlend];
-    [screenBlend addTarget:endFilter];
+    
+    // ファーストフィルター → 赤色抽出フィルター 　↓
+    [selectiveColorFilter addTarget:lightenBlend atTextureLocation:1]; // こっちが上
+    // ファーストフィルター → グレイスケール      → ライトブレンド
+    [grayScale addTarget:lightenBlend]; // こっちが下
+    
+    
+    // ファーストフィルター → 赤色抽出フィルター　 ↓
+    // ファーストフィルター → グレイスケール      → ライトブレンド → エンドフィルター
+    [lightenBlend addTarget:endFilter];
     //-------------------------------------------
 
     
@@ -101,7 +114,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark press btn
+#pragma mark IBAction
+// Saveボタンを押した時の挙動
 - (IBAction)pressSaveBtn:(id)sender {
     // 指定したFilterがかかった、画像が取得できる。そのために、プロパティでfilterをもたせている。今回はFilterGroupなのに注目
     [self.stillCamera capturePhotoAsImageProcessedUpToFilter:self.filterGroup withCompletionHandler:^(UIImage *processedImage, NSError *error){
@@ -111,10 +125,29 @@
                                      metadata:nil
                               completionBlock:^(NSURL *assetURL, NSError *error){
                                   if (!error) {
-                                      NSLog(@"保存成功！");
+                                      LOG(@"保存成功！");
                                   }
                               }
          ];
     }];
 }
+// Sliderを動かした時の挙動
+- (IBAction)changeSlider:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    [selectiveColorFilter setHueCenter:slider.value];
+}
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+

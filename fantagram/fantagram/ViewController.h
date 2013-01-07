@@ -13,4 +13,5 @@
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet GPUImageView *imageView;
 - (IBAction)pressSaveBtn:(id)sender;
+- (IBAction)changeSlider:(id)sender;
 @end
