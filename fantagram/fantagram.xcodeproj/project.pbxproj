@@ -39,6 +39,11 @@
 		932646EB16948AE7007C72F8 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646E016948AE7007C72F8 /* UIViewController+Helper.m */; };
 		932646EC16948AE7007C72F8 /* UIWebView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 932646E216948AE7007C72F8 /* UIWebView+Helper.m */; };
 		932646EF16948C37007C72F8 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 932646EE16948C37007C72F8 /* sample.jpg */; };
+		934AF4E3169B2C6F001B2DB1 /* captureBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E1169B2C6F001B2DB1 /* captureBtn@2x.png */; };
+		934AF4E4169B2C6F001B2DB1 /* flipcamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E2169B2C6F001B2DB1 /* flipcamera@2x.png */; };
+		934AF4E8169B30FF001B2DB1 /* flashAuto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E5169B30FF001B2DB1 /* flashAuto@2x.png */; };
+		934AF4E9169B30FF001B2DB1 /* flashOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E6169B30FF001B2DB1 /* flashOff@2x.png */; };
+		934AF4EA169B30FF001B2DB1 /* flashOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E7169B30FF001B2DB1 /* flashOn@2x.png */; };
 		93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C0169485D6007C72F8 /* libGPUImage.a */; };
 		93BB07A8169538330047CCAF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BB07A7169538330047CCAF /* AssetsLibrary.framework */; };
 		93BB07E51695AE900047CCAF /* GPUImageSelectiveColorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */; };
@@ -119,6 +124,11 @@
 		932646E116948AE7007C72F8 /* UIWebView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Helper.h"; sourceTree = "<group>"; };
 		932646E216948AE7007C72F8 /* UIWebView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Helper.m"; sourceTree = "<group>"; };
 		932646EE16948C37007C72F8 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		934AF4E1169B2C6F001B2DB1 /* captureBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captureBtn@2x.png"; sourceTree = "<group>"; };
+		934AF4E2169B2C6F001B2DB1 /* flipcamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flipcamera@2x.png"; sourceTree = "<group>"; };
+		934AF4E5169B30FF001B2DB1 /* flashAuto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashAuto@2x.png"; sourceTree = "<group>"; };
+		934AF4E6169B30FF001B2DB1 /* flashOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOff@2x.png"; sourceTree = "<group>"; };
+		934AF4E7169B30FF001B2DB1 /* flashOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOn@2x.png"; sourceTree = "<group>"; };
 		93BB07A7169538330047CCAF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		93BB07E31695AE900047CCAF /* GPUImageSelectiveColorFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageSelectiveColorFilter.h; sourceTree = "<group>"; };
 		93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageSelectiveColorFilter.m; sourceTree = "<group>"; };
@@ -282,10 +292,23 @@
 		932646ED16948C37007C72F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				934AF4E0169B2C6F001B2DB1 /* UI */,
 				932646EE16948C37007C72F8 /* sample.jpg */,
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		934AF4E0169B2C6F001B2DB1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				934AF4E1169B2C6F001B2DB1 /* captureBtn@2x.png */,
+				934AF4E5169B30FF001B2DB1 /* flashAuto@2x.png */,
+				934AF4E6169B30FF001B2DB1 /* flashOff@2x.png */,
+				934AF4E7169B30FF001B2DB1 /* flashOn@2x.png */,
+				934AF4E2169B2C6F001B2DB1 /* flipcamera@2x.png */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		93BB07E11695AE130047CCAF /* GPUImage */ = {
@@ -405,6 +428,11 @@
 				9326469216944DEC007C72F8 /* Default-568h@2x.png in Resources */,
 				9326469516944DEC007C72F8 /* MainStoryboard.storyboard in Resources */,
 				932646EF16948C37007C72F8 /* sample.jpg in Resources */,
+				934AF4E3169B2C6F001B2DB1 /* captureBtn@2x.png in Resources */,
+				934AF4E4169B2C6F001B2DB1 /* flipcamera@2x.png in Resources */,
+				934AF4E8169B30FF001B2DB1 /* flashAuto@2x.png in Resources */,
+				934AF4E9169B30FF001B2DB1 /* flashOff@2x.png in Resources */,
+				934AF4EA169B30FF001B2DB1 /* flashOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

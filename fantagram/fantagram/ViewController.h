@@ -12,6 +12,10 @@
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet GPUImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *flashBtn;
+@property (weak, nonatomic) IBOutlet UIButton *flipCameraBtn;
 - (IBAction)pressSaveBtn:(id)sender;
 - (IBAction)changeSlider:(id)sender;
+- (IBAction)pressFlipCameraBtn:(id)sender;
+- (IBAction)pressFlashBtn:(id)sender;
 @end
