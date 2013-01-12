@@ -4,3 +4,6 @@
 [submodule "UIKitHelper"]
 	path = UIKitHelper
 	url = git@github.com:kasajei/UIKitHelper.git
+[submodule "BCGenieEffect"]
+	path = BCGenieEffect
+	url = git://github.com/Ciechan/BCGenieEffect.git

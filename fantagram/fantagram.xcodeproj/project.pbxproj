@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9318592F16A124F300CED885 /* imagePicker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9318592E16A124F300CED885 /* imagePicker@2x.png */; };
 		9326467C16944DEC007C72F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9326467B16944DEC007C72F8 /* UIKit.framework */; };
 		9326467E16944DEC007C72F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9326467D16944DEC007C72F8 /* Foundation.framework */; };
 		9326468016944DEC007C72F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9326467F16944DEC007C72F8 /* CoreGraphics.framework */; };
@@ -44,9 +45,13 @@
 		934AF4E8169B30FF001B2DB1 /* flashAuto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E5169B30FF001B2DB1 /* flashAuto@2x.png */; };
 		934AF4E9169B30FF001B2DB1 /* flashOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E6169B30FF001B2DB1 /* flashOff@2x.png */; };
 		934AF4EA169B30FF001B2DB1 /* flashOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 934AF4E7169B30FF001B2DB1 /* flashOn@2x.png */; };
+		935975B1169C7082006A1BE4 /* UIView+Genie.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359759C169C7082006A1BE4 /* UIView+Genie.m */; };
 		93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932646C0169485D6007C72F8 /* libGPUImage.a */; };
 		93BB07A8169538330047CCAF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BB07A7169538330047CCAF /* AssetsLibrary.framework */; };
 		93BB07E51695AE900047CCAF /* GPUImageSelectiveColorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */; };
+		93CBB11016A1740700B67AC6 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CBB10F16A1740700B67AC6 /* libBlocksKit.a */; };
+		93CBB11216A175ED00B67AC6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CBB11116A175ED00B67AC6 /* MessageUI.framework */; };
+		93CBB11416A180E300B67AC6 /* savePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CBB11316A180E300B67AC6 /* savePhoto@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9318592E16A124F300CED885 /* imagePicker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imagePicker@2x.png"; sourceTree = "<group>"; };
 		9326467716944DEC007C72F8 /* fantagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fantagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9326467B16944DEC007C72F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9326467D16944DEC007C72F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,9 +135,14 @@
 		934AF4E5169B30FF001B2DB1 /* flashAuto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashAuto@2x.png"; sourceTree = "<group>"; };
 		934AF4E6169B30FF001B2DB1 /* flashOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOff@2x.png"; sourceTree = "<group>"; };
 		934AF4E7169B30FF001B2DB1 /* flashOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOn@2x.png"; sourceTree = "<group>"; };
+		9359759B169C7082006A1BE4 /* UIView+Genie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Genie.h"; sourceTree = "<group>"; };
+		9359759C169C7082006A1BE4 /* UIView+Genie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Genie.m"; sourceTree = "<group>"; };
 		93BB07A7169538330047CCAF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		93BB07E31695AE900047CCAF /* GPUImageSelectiveColorFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageSelectiveColorFilter.h; sourceTree = "<group>"; };
 		93BB07E41695AE900047CCAF /* GPUImageSelectiveColorFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageSelectiveColorFilter.m; sourceTree = "<group>"; };
+		93CBB10F16A1740700B67AC6 /* libBlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBlocksKit.a; path = ../BlocksKit1.8.1.2/libBlocksKit.a; sourceTree = "<group>"; };
+		93CBB11116A175ED00B67AC6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		93CBB11316A180E300B67AC6 /* savePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savePhoto@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CBB11216A175ED00B67AC6 /* MessageUI.framework in Frameworks */,
+				93CBB11016A1740700B67AC6 /* libBlocksKit.a in Frameworks */,
 				93BB07A8169538330047CCAF /* AssetsLibrary.framework in Frameworks */,
 				93BB076B169491040047CCAF /* libGPUImage.a in Frameworks */,
 				932646CC16948786007C72F8 /* QuartzCore.framework in Frameworks */,
@@ -168,6 +181,9 @@
 		9326466C16944DEB007C72F8 = {
 			isa = PBXGroup;
 			children = (
+				93CBB11116A175ED00B67AC6 /* MessageUI.framework */,
+				93CBB10F16A1740700B67AC6 /* libBlocksKit.a */,
+				9359757F169C7082006A1BE4 /* BCGenieEffect */,
 				932646ED16948C37007C72F8 /* Resources */,
 				932646CD16948AE7007C72F8 /* UIKitHelper */,
 				9326468116944DEC007C72F8 /* fantagram */,
@@ -302,6 +318,8 @@
 		934AF4E0169B2C6F001B2DB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				93CBB11316A180E300B67AC6 /* savePhoto@2x.png */,
+				9318592E16A124F300CED885 /* imagePicker@2x.png */,
 				934AF4E1169B2C6F001B2DB1 /* captureBtn@2x.png */,
 				934AF4E5169B30FF001B2DB1 /* flashAuto@2x.png */,
 				934AF4E6169B30FF001B2DB1 /* flashOff@2x.png */,
@@ -309,6 +327,16 @@
 				934AF4E2169B2C6F001B2DB1 /* flipcamera@2x.png */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9359757F169C7082006A1BE4 /* BCGenieEffect */ = {
+			isa = PBXGroup;
+			children = (
+				9359759B169C7082006A1BE4 /* UIView+Genie.h */,
+				9359759C169C7082006A1BE4 /* UIView+Genie.m */,
+			);
+			name = BCGenieEffect;
+			path = ../BCGenieEffect;
 			sourceTree = "<group>";
 		};
 		93BB07E11695AE130047CCAF /* GPUImage */ = {
@@ -433,6 +461,8 @@
 				934AF4E8169B30FF001B2DB1 /* flashAuto@2x.png in Resources */,
 				934AF4E9169B30FF001B2DB1 /* flashOff@2x.png in Resources */,
 				934AF4EA169B30FF001B2DB1 /* flashOn@2x.png in Resources */,
+				9318592F16A124F300CED885 /* imagePicker@2x.png in Resources */,
+				93CBB11416A180E300B67AC6 /* savePhoto@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +511,7 @@
 				932646EB16948AE7007C72F8 /* UIViewController+Helper.m in Sources */,
 				932646EC16948AE7007C72F8 /* UIWebView+Helper.m in Sources */,
 				93BB07E51695AE900047CCAF /* GPUImageSelectiveColorFilter.m in Sources */,
+				935975B1169C7082006A1BE4 /* UIView+Genie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,9 +616,16 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fantagram/fantagram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
+				HEADER_SEARCH_PATHS = (
+					"../GPUImage/framework/**",
+					../BlocksKit1.8.1.2/Headers,
+				);
 				INFOPLIST_FILE = "fantagram/fantagram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../BlocksKit1.8.1.2\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -599,9 +637,16 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fantagram/fantagram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
+				HEADER_SEARCH_PATHS = (
+					"../GPUImage/framework/**",
+					../BlocksKit1.8.1.2/Headers,
+				);
 				INFOPLIST_FILE = "fantagram/fantagram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../BlocksKit1.8.1.2\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

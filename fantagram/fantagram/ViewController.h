@@ -10,12 +10,18 @@
 
 @class GPUImageView;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet GPUImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *flashBtn;
 @property (weak, nonatomic) IBOutlet UIButton *flipCameraBtn;
-- (IBAction)pressSaveBtn:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *imagePickerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *captureBtn;
+@property (weak, nonatomic) IBOutlet UIButton *savePhotoBtn;
+@property (weak, nonatomic) IBOutlet UISlider *hueSlider;
+- (IBAction)pressCaptureBtn:(id)sender;
+- (IBAction)pressSavePhotoBtn:(id)sender;
 - (IBAction)changeSlider:(id)sender;
 - (IBAction)pressFlipCameraBtn:(id)sender;
 - (IBAction)pressFlashBtn:(id)sender;
+- (IBAction)pressImagePickerBtn:(id)sender;
 @end
