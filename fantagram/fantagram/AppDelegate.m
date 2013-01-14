@@ -7,12 +7,36 @@
 //
 
 #import "AppDelegate.h"
+#import "Appirater.h"
+#import "GAI.h"
+
+#define APP_ID @""
+#define UA_TRACKING_ID @""
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Appirater
+    [Appirater setAppId:APP_ID];
+    [Appirater setDaysUntilPrompt:2];
+    [Appirater setUsesUntilPrompt:20];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:2];
+    [Appirater appLaunched:YES];
+    
+    // GoogleAnalytic
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    [GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:UA_TRACKING_ID];
+
     return YES;
 }
 							
@@ -31,6 +55,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

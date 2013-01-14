@@ -16,3 +16,6 @@
 [submodule "SVProgressHUD"]
 	path = SVProgressHUD
 	url = git://github.com/samvermette/SVProgressHUD.git
+[submodule "appirater"]
+	path = appirater
+	url = git://github.com/arashpayan/appirater.git

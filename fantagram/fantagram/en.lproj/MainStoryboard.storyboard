@@ -84,7 +84,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="608-SM-X2d">
-                                <rect key="frame" x="258" y="400" width="50" height="19"/>
+                                <rect key="frame" x="257" y="386" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="otherBtn@2x.png">
@@ -189,17 +189,29 @@
                         <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <adBannerView key="tableHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="w7v-qw-LXw">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="R0y-jp-piq">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <requiredContentSizeIdentifiers>
-                                <string>ADBannerContentSizeLandscape</string>
-                                <string>ADBannerContentSizePortrait</string>
-                            </requiredContentSizeIdentifiers>
-                            <connections>
-                                <outlet property="delegate" destination="Zzz-AA-8Vy" id="NWh-Iz-Fax"/>
-                            </connections>
-                        </adBannerView>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="XBc-Yb-WJx">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </view>
+                                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sx4-1A-URd">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <requiredContentSizeIdentifiers>
+                                        <string>ADBannerContentSizeLandscape</string>
+                                        <string>ADBannerContentSizePortrait</string>
+                                    </requiredContentSizeIdentifiers>
+                                    <connections>
+                                        <outlet property="delegate" destination="Zzz-AA-8Vy" id="Gap-S5-wqw"/>
+                                    </connections>
+                                </adBannerView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="MoreAppCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MoreAppCell" rowHeight="72" id="rCC-3c-Tyf" customClass="MoreAppCell">
                                 <rect key="frame" x="0.0" y="72" width="320" height="72"/>
@@ -259,7 +271,8 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="bannerView" destination="w7v-qw-LXw" id="aoL-qj-vkn"/>
+                        <outlet property="adMobView" destination="XBc-Yb-WJx" id="i9G-kR-53N"/>
+                        <outlet property="bannerView" destination="sx4-1A-URd" id="xm9-cV-g2q"/>
                         <outlet property="socialSegment" destination="a5L-9a-mqe" id="OpR-30-arT"/>
                     </connections>
                 </tableViewController>
@@ -273,7 +286,7 @@
         <image name="flashAuto@2x.png" width="140" height="70"/>
         <image name="flipcamera@2x.png" width="140" height="70"/>
         <image name="imagePicker@2x.png" width="367" height="328"/>
-        <image name="otherBtn@2x.png" width="467" height="172"/>
+        <image name="otherBtn@2x.png" width="328" height="328"/>
         <image name="savePhoto@2x.png" width="344" height="328"/>
         <image name="twitter@2x.png" width="322" height="267"/>
     </resources>
@@ -294,6 +307,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreAppViewController.h"/>
             <relationships>
                 <relationship kind="action" name="changeValueSocialSegment:"/>
+                <relationship kind="outlet" name="adMobView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="bannerView" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="socialSegment" candidateClass="UISegmentedControl"/>
             </relationships>
@@ -303,16 +317,11 @@
             <relationships>
                 <relationship kind="action" name="changeSlider:"/>
                 <relationship kind="action" name="changeSocialSwitch:"/>
-                <relationship kind="action" name="dismiss"/>
-                <relationship kind="action" name="dismissError"/>
-                <relationship kind="action" name="dismissSuccess"/>
                 <relationship kind="action" name="pressCaptureBtn:"/>
                 <relationship kind="action" name="pressFlashBtn:"/>
                 <relationship kind="action" name="pressFlipCameraBtn:"/>
                 <relationship kind="action" name="pressImagePickerBtn:"/>
                 <relationship kind="action" name="pressSavePhotoBtn:"/>
-                <relationship kind="action" name="show"/>
-                <relationship kind="action" name="showWithStatus"/>
                 <relationship kind="outlet" name="captureBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flashBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipCameraBtn" candidateClass="UIButton"/>

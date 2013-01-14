@@ -1,2 +1,3 @@
 "You lost image that is not saved" = "保存されていない写真は削除されます";
 "ApplicationURL" = "";
+"https://s3-ap-northeast-1.amazonaws.com/monocolorcam/MoreApp.json" = "https://s3-ap-northeast-1.amazonaws.com/monocolorcam/MoreApp.json";

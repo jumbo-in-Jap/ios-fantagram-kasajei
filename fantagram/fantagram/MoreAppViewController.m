@@ -15,7 +15,9 @@
 #import "SVProgressHUD.h"
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GAI.h"
 
+#define MY_BANNER_UNIT_ID @"a150f4213387ff1"
 
 @interface MoreAppViewController ()
 @property(nonatomic, strong) NSMutableArray *moreAppArray;
@@ -42,21 +44,48 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    // iOS6以下の時はソーシャルアカウントの切り替えはなし
     if (![VKSocialKit hasSocialFramework]) {
         self.socialSegment.hidden = true;
     }
     
+    // S3から、アプリjsonのローディングを行う
+    [SVProgressHUD showWithStatus:@"loading..."];
     self.moreAppArray = [[NSMutableArray alloc] init];
     __weak MoreAppViewController *blockSelf = self;
     NSString *urlString = NSLocalizedString(@"https://s3-ap-northeast-1.amazonaws.com/monocolorcam/MoreApp.json", nil);
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"App.net Global Stream: %@", JSON);
         blockSelf.moreAppArray = JSON;
         [blockSelf.tableView reloadData];
+        [SVProgressHUD dismiss];
     } failure:nil];
     [operation start];
+    
+    
+    // Admobを作る
+    _admobBannerView = [[GADBannerView alloc]
+                   initWithFrame:CGRectMake(0.0,
+                                            0.0,
+                                            GAD_SIZE_320x50.width,
+                                            GAD_SIZE_320x50.height)];
+    
+    // 広告の「ユニット ID」を指定する。これは AdMob パブリッシャー ID です。
+    _admobBannerView.adUnitID = MY_BANNER_UNIT_ID;
+    
+    // ユーザーに広告を表示した場所に後で復元する UIViewController をランタイムに知らせて
+    // ビュー階層に追加する。
+    _admobBannerView.rootViewController = self;
+    [self.adMobView addSubview:_admobBannerView];
+    
+    // 一般的なリクエストを行って広告を読み込む。
+    [_admobBannerView loadRequest:[GADRequest request]];
+    
+    // GAでトラッキング
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker trackView:@"MoreAppViewController"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -158,28 +187,35 @@
         [cell setSelected:false];
     }
     
+    NSString *appName = [appDic objectForKey:@"AppName"];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker trackEventWithCategory:@"MoreAppViewController" withAction:@"PressAppCell" withLabel:appName withValue:@1];
     
 }
 
 - (void)viewDidUnload {
     [self setBannerView:nil];
-    [self setBannerView:nil];
     [self setSocialSegment:nil];
+    [self setAdMobView:nil];
     [super viewDidUnload];
 }
 
+#pragma mark 広告系のdelegate
 //iAd取得成功
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    NSLog(@"iAd取得成功");
+    self.bannerView.hidden = false;
 }
 
 //iAd取得失敗
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    NSLog(@"iAd取得失敗");
+    self.bannerView.hidden = true;
 }
 
+
+
+#pragma mark StoreKitのdelegate
 // StoreKitのdelegate
 -(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
 {
@@ -189,10 +225,11 @@
                              }];
 }
 
+
+#pragma mark IBAction
 // SegmentedControllerの値が変わったら
 - (IBAction)changeValueSocialSegment:(id)sender {
     UISegmentedControl *segment = (UISegmentedControl *)sender;
-    
     VKSocialType socialType;
     switch (segment.selectedSegmentIndex) {
         case 0:

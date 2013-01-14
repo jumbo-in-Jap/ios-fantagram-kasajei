@@ -16,7 +16,7 @@
 #import "VKPostModel.h"
 #import "UIViewController+VKSocialController.h"
 #import "UserDefaults.h"
-
+#import "GAI.h"
 
 
 @interface ViewController (){
@@ -236,6 +236,11 @@
     self.stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     // カメラへのエフェクト開始
     [self startEffectToStillCamera];
+    
+    
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker trackView:@"ViewController"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -258,6 +263,7 @@
             break;
     }
     [self.socialIconView setImage:socialIconImage];
+    
 }
 
 
@@ -398,8 +404,20 @@
         
 
         [self post:post complete:^(BOOL success){
-            // ボタンを使えるようにする
-            
+            // GAでどのソーシャルにどれだけ拡散したかをとっておく
+            NSString *socialType;
+            switch ([[NSUserDefaults standardUserDefaults] integerForKey:USER_DEFAULTS_SOCIA_TYPE]) {
+                case kVKTwitter:
+                    socialType = @"twitter";
+                    break;
+                case kVKFacebook:
+                    socialType = @"facebook";
+                    break;
+                default:
+                    break;
+            }
+            id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+            [tracker trackEventWithCategory:@"ViewController" withAction:@"SocialPostDone" withLabel:socialType withValue:@1];
         }];
     }
     [self setEnableAllBtn:true];
