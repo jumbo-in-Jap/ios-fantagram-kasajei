@@ -12,6 +12,12 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "GPUImageSelectiveColorFilter.h"
 #import "UIView+Genie.h"
+#import "VKSocialKit.h"
+#import "VKPostModel.h"
+#import "UIViewController+VKSocialController.h"
+#import "UserDefaults.h"
+
+
 
 @interface ViewController (){
     // あとで値を変えられるように
@@ -205,11 +211,24 @@
 }
 
 #pragma mark LifeCyle
+- (void)initUserDefault{
+    [NSUserDefaults setDefault:^(NSMutableDictionary *defaultDic){
+        // スイッチはOnがデフォ
+        [defaultDic setBool:true forKey:USER_DEFAULTS_SOCIAL_SWICHT];
+        [defaultDic setInteger:kVKTwitter forKey:USER_DEFAULTS_SOCIA_TYPE];
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // captureBtnのpositionを保存しておく
     captureBtnPosition = self.captureBtn.frame.origin;
+    // NSUserDefaultの初期化
+    [self initUserDefault];
+    // socialSwitchに前の情報を入れておく
+    BOOL switchOn  = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_SOCIAL_SWICHT];
+    [self.socialSwitch setOn:switchOn];
     
     // setting for stiilCamera
     self.stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPresetPhoto cameraPosition:AVCaptureDevicePositionBack];
@@ -218,6 +237,30 @@
     // カメラへのエフェクト開始
     [self startEffectToStillCamera];
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    // captureBtnのpositionを保存しておく
+    if (self.savePhotoBtn.hidden) { // saveボタンがないということは、元の位置にいる
+        captureBtnPosition = self.captureBtn.frame.origin;
+    }
+    
+    // socialIconViewを設定により張り替える
+    UIImage *socialIconImage;
+    switch ([[NSUserDefaults standardUserDefaults] integerForKey:USER_DEFAULTS_SOCIA_TYPE]) {
+        case kVKTwitter:
+            socialIconImage = [UIImage imageNamed:@"twitter"];
+            break;
+        case kVKFacebook:
+            socialIconImage = [UIImage imageNamed:@"facebook"];
+            break;
+        default:
+            break;
+    }
+    [self.socialIconView setImage:socialIconImage];
+}
+
+
 
 
 - (void)didReceiveMemoryWarning
@@ -233,6 +276,8 @@
     [self setCaptureBtn:nil];
     [self setHueSlider:nil];
     [self setSavePhotoBtn:nil];
+    [self setSocialSwitch:nil];
+    [self setSocialIconView:nil];
     [super viewDidUnload];
 }
 
@@ -255,7 +300,7 @@
         
     }else{// もしImagePickerから写真を選んで編集している状況だったら
         // BlocksKitを使ってる
-        UIAlertView *alert = [UIAlertView alertViewWithTitle:@"写真を編集中です" message:@"編集画像を消去してカメラにもどってもよろしいですか？"];
+        UIAlertView *alert = [UIAlertView alertViewWithTitle:nil message:NSLocalizedString(@"You lost image that is not saved", @"")];
         __weak id blockSelf = self;
         [alert addButtonWithTitle:@"NO"];
         [alert addButtonWithTitle:@"OK" handler:^(void) {
@@ -266,6 +311,7 @@
     }
 }
 
+
 - (IBAction)pressSavePhotoBtn:(id)sender {
     // 画像を保存する
     UIImage *image = [self.filterGroup imageFromCurrentlyProcessedOutput];
@@ -273,6 +319,17 @@
     [self saveAnimation:image];
     // イメージを保存
     [self saveImage:image];
+}
+
+// スイッチを動かした時
+- (IBAction)changeSocialSwitch:(id)sender {
+    UISwitch *mySwitch = sender;
+//    [[NSUserDefaults standardUserDefaults] setBool:mySwitch.on forKey:USER_DEFAULTS_SOCIAL_SWICHT];
+    [NSUserDefaults synchronize:^(NSUserDefaults *ud){
+        [ud setBool:mySwitch.on forKey:USER_DEFAULTS_SOCIAL_SWICHT];
+    }];
+    LOG(@"%d",mySwitch.on);
+
 }
 
 // Sliderを動かした時の挙動
@@ -332,6 +389,22 @@
 
 
 #pragma mark 写真保存後のアクション
+- (void)socialPostWithImage:(UIImage *)image{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_SOCIAL_SWICHT]) {
+        VKPostModel *post = [[VKPostModel alloc] init];
+        post.socialType = [[NSUserDefaults standardUserDefaults] integerForKey:USER_DEFAULTS_SOCIA_TYPE];
+        post.image = image;
+        post.url = NSLocalizedString(@"ApplicationURL", @"");
+        
+
+        [self post:post complete:^(BOOL success){
+            // ボタンを使えるようにする
+            
+        }];
+    }
+    [self setEnableAllBtn:true];
+}
+
 // 写真を保存する前のアニメーション
 - (void)saveAnimation:(UIImage *)image{
     
@@ -350,8 +423,8 @@
                                       [_imagePickerBtn setImage:imageView.image forState:UIControlStateNormal];
                                       // imageViewを除く
                                       [imageView removeFromSuperview];
-                                      // ボタンを使えるようにする
-                                      [blockSelf setEnableAllBtn:true];
+                                      // ソーシャルにポストする
+                                      [blockSelf socialPostWithImage:image];
                                   }
      ];
 }

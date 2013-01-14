@@ -7,3 +7,12 @@
 [submodule "BCGenieEffect"]
 	path = BCGenieEffect
 	url = git://github.com/Ciechan/BCGenieEffect.git
+[submodule "vksocialkit"]
+	path = vksocialkit
+	url = git@bitbucket.org:kasajei/vksocialkit.git
+[submodule "AFNetworking"]
+	path = AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "SVProgressHUD"]
+	path = SVProgressHUD
+	url = git://github.com/samvermette/SVProgressHUD.git

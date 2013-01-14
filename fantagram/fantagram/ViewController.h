@@ -18,8 +18,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *captureBtn;
 @property (weak, nonatomic) IBOutlet UIButton *savePhotoBtn;
 @property (weak, nonatomic) IBOutlet UISlider *hueSlider;
+@property (weak, nonatomic) IBOutlet UISwitch *socialSwitch;
+@property (weak, nonatomic) IBOutlet UIImageView *socialIconView;
 - (IBAction)pressCaptureBtn:(id)sender;
 - (IBAction)pressSavePhotoBtn:(id)sender;
+- (IBAction)changeSocialSwitch:(id)sender;
 - (IBAction)changeSlider:(id)sender;
 - (IBAction)pressFlipCameraBtn:(id)sender;
 - (IBAction)pressFlashBtn:(id)sender;
