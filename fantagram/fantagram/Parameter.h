@@ -1,14 +1,10 @@
-//
-//  Parameter.h
-//  fantagram
-//
-//  Created by Kasajima Yasuo on 2013/01/19.
-//  Copyright (c) 2013年 kasajei. All rights reserved.
-//
+// Appirater
+#define APP_ID @""
+// GA
+#define UA_TRACKING_ID @""
+// Admob
+#define MY_BANNER_UNIT_ID @"a150f4213387ff1"
 
-#ifndef fantagram_Parameter_h
-#define fantagram_Parameter_h
-
-
-
-#endif
+// Parse
+#define PARSE_APPLICATION_ID @""
+#define PARSE_CLIENT_KEY @""
