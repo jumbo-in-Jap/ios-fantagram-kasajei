@@ -34,22 +34,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
-    // iOS6以下の時はソーシャルアカウントの切り替えはなし
-    if (![VKSocialKit hasSocialFramework]) {
-        self.socialSegment.hidden = true;
-    }
-    
+- (void)getMoreAppJson{
     // S3から、アプリjsonのローディングを行う
     [SVProgressHUD showWithStatus:@"loading..."];
     self.moreAppArray = [[NSMutableArray alloc] init];
@@ -66,6 +51,25 @@
         [SVProgressHUD showErrorWithStatus:@"Failed..."];
     }];
     [operation start];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    // iOS6以下の時はソーシャルアカウントの切り替えはなし
+    if (![VKSocialKit hasSocialFramework]) {
+        self.socialSegment.hidden = true;
+    }
+    
+    [self getMoreAppJson];
     
     
     // Admobを作る
@@ -272,7 +276,7 @@
 #pragma mark PushAction
 -(void)pushAction:(NSDictionary *)userInfo{
     LOG(@"");
-    [self.tableView reloadData];
+    [self getMoreAppJson];
 }
 
 @end
