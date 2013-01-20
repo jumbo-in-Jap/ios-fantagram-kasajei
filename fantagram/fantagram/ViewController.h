@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class GPUImageView;
+@class CustomBadge;
 
 @interface ViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet GPUImageView *imageView;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *hueSlider;
 @property (weak, nonatomic) IBOutlet UISwitch *socialSwitch;
 @property (weak, nonatomic) IBOutlet UIImageView *socialIconView;
+@property (weak, nonatomic) IBOutlet UIButton *moreAppBtn;
 - (IBAction)pressCaptureBtn:(id)sender;
 - (IBAction)pressSavePhotoBtn:(id)sender;
 - (IBAction)changeSocialSwitch:(id)sender;
@@ -27,4 +29,7 @@
 - (IBAction)pressFlipCameraBtn:(id)sender;
 - (IBAction)pressFlashBtn:(id)sender;
 - (IBAction)pressImagePickerBtn:(id)sender;
+
+// AppDelegate
+-(void)pushAction:(NSDictionary *)userInfo;
 @end

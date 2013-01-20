@@ -16,8 +16,8 @@
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GAI.h"
-
-#define MY_BANNER_UNIT_ID @"a150f4213387ff1"
+#import "Parameter.h"
+#import <Parse/Parse.h>
 
 @interface MoreAppViewController ()
 @property(nonatomic, strong) NSMutableArray *moreAppArray;
@@ -54,14 +54,17 @@
     [SVProgressHUD showWithStatus:@"loading..."];
     self.moreAppArray = [[NSMutableArray alloc] init];
     __weak MoreAppViewController *blockSelf = self;
-    NSString *urlString = NSLocalizedString(@"https://s3-ap-northeast-1.amazonaws.com/monocolorcam/MoreApp.json", nil);
+    NSString *urlString = NSLocalizedString(@"JSON_URL", nil);
+    LOG(@"`%@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         blockSelf.moreAppArray = JSON;
         [blockSelf.tableView reloadData];
         [SVProgressHUD dismiss];
-    } failure:nil];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error , id JSON){
+        [SVProgressHUD showErrorWithStatus:@"Failed..."];
+    }];
     [operation start];
     
     
@@ -103,6 +106,16 @@
             break;
     }
     [self.socialSegment setSelectedSegmentIndex:segment];
+    
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController.parentViewController;
+    LOG(@"%@",NSStringFromClass([vc class]));
+    
+    // badgeを0にする
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,15 +155,25 @@
     NSURL *appIconURL = [NSURL URLWithString:[appDic objectForKey:@"iconURL"]];
     UIImage *placeholderImage = [UIImage imageNamed:@"sample.jpg"];
     [cell.iconImageView setImageWithURL:appIconURL placeholderImage:placeholderImage];
+    NSURLRequest *request = [NSURLRequest requestWithURL:appIconURL];
     
     [cell.appNameLabel setText:[appDic objectForKey:@"AppName"]];
     [cell.descriptionLabel setText:[appDic objectForKey:@"Description"]];
     
-    // FIXME: MoreAppCell.mでやりたい
-    cell.iconImageView.layer.cornerRadius = 10;
-    cell.iconImageView.clipsToBounds = true;
+    // Pushの未読があるときだけ
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        cell.badgeImageView.alpha = [appDic boolForKey:@"newBadge"];
+    }else{
+        cell.badgeImageView.alpha = 0;
+    }
     
-    // Configure the cell...
+    
+    
+    // FIXME: MoreAppCell.mでやりたい
+//    cell.iconImageView.layer.cornerRadius = 5;
+//    cell.iconImageView.clipsToBounds = true;
+
     
     return cell;
 }
@@ -245,4 +268,11 @@
         [ud setInteger:socialType forKey:USER_DEFAULTS_SOCIA_TYPE];
     }];
 }
+
+#pragma mark PushAction
+-(void)pushAction:(NSDictionary *)userInfo{
+    LOG(@"");
+    [self.tableView reloadData];
+}
+
 @end

@@ -95,12 +95,19 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Zzz-AA-8Vy" kind="push" id="O83-eK-Nrl"/>
+                                    <segue destination="Zzz-AA-8Vy" kind="push" identifier="moreAppSegue" id="O83-eK-Nrl"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" id="emG-U1-bHi">
-                                <rect key="frame" x="15" y="353" width="297" height="23"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="hueSlider.png" id="ICd-W2-gYK">
+                                <rect key="frame" x="17" y="353" width="290" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" id="emG-U1-bHi">
+                                <rect key="frame" x="12" y="353" width="300" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="changeSlider:" destination="2" eventType="valueChanged" id="8wn-0c-zSd"/>
                                 </connections>
@@ -172,6 +179,7 @@
                         <outlet property="hueSlider" destination="emG-U1-bHi" id="ISc-iu-yQS"/>
                         <outlet property="imagePickerBtn" destination="LBK-Hv-dVX" id="hwk-su-Jmq"/>
                         <outlet property="imageView" destination="EoW-mG-Elm" id="4jx-f0-VC9"/>
+                        <outlet property="moreAppBtn" destination="608-SM-X2d" id="hvZ-4i-zYr"/>
                         <outlet property="savePhotoBtn" destination="Ux4-Ut-JXV" id="khh-kS-Kg0"/>
                         <outlet property="socialIconView" destination="hf1-cX-c59" id="k21-6L-2Yc"/>
                         <outlet property="socialSwitch" destination="Aeq-m0-PhP" id="ueu-TD-11z"/>
@@ -220,7 +228,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="VvE-ev-6JO">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="VvE-ev-6JO" userLabel="AppIcon">
                                             <rect key="frame" x="6" y="7" width="57" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -239,11 +247,16 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="newBadge.png" id="7lg-0X-6B6" userLabel="NewBadgeImageView">
+                                            <rect key="frame" x="6" y="7" width="57" height="57"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
                                     <outlet property="appNameLabel" destination="KQ1-NA-Rue" id="PtK-VG-VF9"/>
+                                    <outlet property="badgeImageView" destination="7lg-0X-6B6" id="iTm-9m-Qxg"/>
                                     <outlet property="descriptionLabel" destination="kk8-Fo-HRT" id="M5p-ZM-bvN"/>
                                     <outlet property="iconImageView" destination="VvE-ev-6JO" id="IJy-WG-TJp"/>
                                 </connections>
@@ -285,7 +298,9 @@
         <image name="captureBtn@2x.png" width="150" height="152"/>
         <image name="flashAuto@2x.png" width="140" height="70"/>
         <image name="flipcamera@2x.png" width="140" height="70"/>
+        <image name="hueSlider.png" width="565" height="22"/>
         <image name="imagePicker@2x.png" width="367" height="328"/>
+        <image name="newBadge.png" width="228" height="228"/>
         <image name="otherBtn@2x.png" width="328" height="328"/>
         <image name="savePhoto@2x.png" width="344" height="328"/>
         <image name="twitter@2x.png" width="322" height="267"/>
@@ -298,9 +313,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreAppCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="appNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="badgeImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="indecatorView" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
         <class className="MoreAppViewController" superclassName="UITableViewController">
@@ -328,6 +343,7 @@
                 <relationship kind="outlet" name="hueSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="imagePickerBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageView" candidateClass="GPUImageView"/>
+                <relationship kind="outlet" name="moreAppBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="savePhotoBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="socialIconView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="socialSwitch" candidateClass="UISwitch"/>

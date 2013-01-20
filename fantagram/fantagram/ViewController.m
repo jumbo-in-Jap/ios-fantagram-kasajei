@@ -17,7 +17,9 @@
 #import "UIViewController+VKSocialController.h"
 #import "UserDefaults.h"
 #import "GAI.h"
-
+#import <Parse/Parse.h>
+#import "CustomBadge.h"
+#import "Parameter.h"
 
 @interface ViewController (){
     // あとで値を変えられるように
@@ -29,6 +31,8 @@
 @property(nonatomic, strong) GPUImageStillCamera *stillCamera; // カメラのinput
 @property(nonatomic, strong) GPUImagePicture *stillImageSource; // imagepickerから選んだ時の画像
 @property(nonatomic, strong) GPUImageFilterGroup *filterGroup; // フィルターグループ
+
+@property(nonatomic, weak)CustomBadge *unreadCount;
 @end
 
 @implementation ViewController
@@ -94,9 +98,11 @@
     if (isCrop){
         // 正方形にする
         firstFilter = [[GPUImageCropFilter alloc] initWithCropRegion:CGRectMake(0, 0.125f, 1.0f, 0.75f)];
+        [firstFilter forceProcessingAtSize:CGSizeMake(photoSize, photoSize)];
     }else{
         // 正方形にしない
         firstFilter = [[GPUImageFilter alloc] init];
+        [firstFilter forceProcessingAtSize:CGSizeMake(photoSize, photoSize)];
     }
     
 
@@ -106,10 +112,13 @@
     // 変更を加えるところ-------------------------------------------
     
     GPUImageGrayscaleFilter *grayScale = [[GPUImageGrayscaleFilter alloc] init];
+    [grayScale forceProcessingAtSize:CGSizeMake(photoSize, photoSize)];
     [self.filterGroup addTarget:grayScale];
     _selectiveColorFilter = [[GPUImageSelectiveColorFilter alloc] init];
+    [_selectiveColorFilter forceProcessingAtSize:CGSizeMake(photoSize, photoSize)];
     [self.filterGroup addTarget:_selectiveColorFilter];
     GPUImageLightenBlendFilter *lightenBlend = [[GPUImageLightenBlendFilter alloc] init];
+    [lightenBlend forceProcessingAtSize:CGSizeMake(photoSize, photoSize)];
     [self.filterGroup addTarget:lightenBlend];
     
     //-------------------------------------------
@@ -222,6 +231,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
     // captureBtnのpositionを保存しておく
     captureBtnPosition = self.captureBtn.frame.origin;
     // NSUserDefaultの初期化
@@ -230,7 +241,8 @@
     BOOL switchOn  = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_SOCIAL_SWICHT];
     [self.socialSwitch setOn:switchOn];
     
-    // setting for stiilCamera
+
+       // setting for stiilCamera
     self.stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPresetPhoto cameraPosition:AVCaptureDevicePositionBack];
     // 保存される画像はPortrait
     self.stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
@@ -241,6 +253,20 @@
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker trackView:@"ViewController"];
+    
+    CustomBadge *badge = [CustomBadge customBadgeWithString:@""
+                                          withStringColor:[UIColor whiteColor]
+                                           withInsetColor:[UIColor redColor]
+                                           withBadgeFrame:YES
+                                      withBadgeFrameColor:[UIColor whiteColor]
+                                                withScale:1.0
+                                              withShining:YES];
+    
+    badge.center = CGPointMake(self.moreAppBtn.bounds.size.width, 10);
+    
+    [self.moreAppBtn addSubview:badge];
+    self.unreadCount = badge;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -264,6 +290,23 @@
     }
     [self.socialIconView setImage:socialIconImage];
     
+    // Alertの未読
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        LOG(@"%d", currentInstallation.badge);
+        self.unreadCount.alpha = 1;
+        NSString *string ;
+        if (currentInstallation.badge < 10) {
+            string = [NSString stringWithFormat:@"%d",currentInstallation.badge];
+        }else{
+            string = @"N";
+        }
+        
+        [self.unreadCount setBadgeText:string];
+    }else{
+        self.unreadCount.alpha = 0;
+    }
+   
 }
 
 
@@ -284,6 +327,7 @@
     [self setSavePhotoBtn:nil];
     [self setSocialSwitch:nil];
     [self setSocialIconView:nil];
+    [self setMoreAppBtn:nil];
     [super viewDidUnload];
 }
 
@@ -400,7 +444,7 @@
         VKPostModel *post = [[VKPostModel alloc] init];
         post.socialType = [[NSUserDefaults standardUserDefaults] integerForKey:USER_DEFAULTS_SOCIA_TYPE];
         post.image = image;
-        post.url = NSLocalizedString(@"ApplicationURL", @"");
+        post.url = APP_URL;
         
 
         [self post:post complete:^(BOOL success){
@@ -497,6 +541,12 @@
     }else{ // 静止画を持っていたらそのまま静止画の編集画面に戻る
         [picker dismissModalViewControllerAnimated:YES];
     }
+}
+
+#pragma mark PushAction
+-(void)pushAction:(NSDictionary *)userInfo{
+    LOG(@"");
+    [self performSegueWithIdentifier:@"moreAppSegue" sender:self];
 }
 @end
 

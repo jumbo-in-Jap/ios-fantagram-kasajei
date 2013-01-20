@@ -12,5 +12,5 @@
 @property(weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property(weak, nonatomic) IBOutlet UILabel *appNameLabel;
 @property(weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *indecatorView;
+@property (weak, nonatomic) IBOutlet UIImageView *badgeImageView;
 @end

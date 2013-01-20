@@ -15,8 +15,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        self.iconImageView.layer.cornerRadius = 5;
-//        self.iconImageView.clipsToBounds = true;
+        self.iconImageView.clipsToBounds = true;
+        self.iconImageView.layer.cornerRadius = 5;
     }
     return self;
 }
@@ -26,5 +26,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.iconImageView.clipsToBounds = true;
+    self.iconImageView.layer.cornerRadius = 5;
 }
 @end

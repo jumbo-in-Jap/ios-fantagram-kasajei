@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet ADBannerView *bannerView;
 @property (weak, nonatomic) IBOutlet UIView *adMobView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *socialSegment;
+
 - (IBAction)changeValueSocialSegment:(id)sender;
 
+// AppDelegate
+-(void)pushAction:(NSDictionary *)userInfo;
 @end
