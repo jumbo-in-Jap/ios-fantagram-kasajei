@@ -46,6 +46,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         blockSelf.moreAppArray = JSON;
         [blockSelf.tableView reloadData];
+        LOG(@"%@",JSON);
         [SVProgressHUD dismiss];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error , id JSON){
         [SVProgressHUD showErrorWithStatus:@"Failed..."];
