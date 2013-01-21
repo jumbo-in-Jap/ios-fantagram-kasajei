@@ -111,6 +111,7 @@
 		93CBB11016A1740700B67AC6 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CBB10F16A1740700B67AC6 /* libBlocksKit.a */; };
 		93CBB11216A175ED00B67AC6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CBB11116A175ED00B67AC6 /* MessageUI.framework */; };
 		93CBB11416A180E300B67AC6 /* savePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CBB11316A180E300B67AC6 /* savePhoto@2x.png */; };
+		93F95E1616ACD83F0012C1DA /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 93F95E1516ACD83F0012C1DA /* loading.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,7 @@
 		93CBB10F16A1740700B67AC6 /* libBlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBlocksKit.a; path = ../BlocksKit1.8.1.2/libBlocksKit.a; sourceTree = "<group>"; };
 		93CBB11116A175ED00B67AC6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		93CBB11316A180E300B67AC6 /* savePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "savePhoto@2x.png"; sourceTree = "<group>"; };
+		93F95E1516ACD83F0012C1DA /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,6 +587,7 @@
 		934AF4E0169B2C6F001B2DB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				93F95E1516ACD83F0012C1DA /* loading.png */,
 				9390B1F716AB08750019FE54 /* hueSlider.png */,
 				9390B1DE16AB01590019FE54 /* newBadge.png */,
 				936A470316A3F99000E13EF7 /* otherBtn@2x.png */,
@@ -847,6 +850,7 @@
 				9390B1F816AB08750019FE54 /* hueSlider.png in Resources */,
 				9390B1FB16ABBF450019FE54 /* icon57.png in Resources */,
 				9390B1FD16ABBF480019FE54 /* icon114.png in Resources */,
+				93F95E1616ACD83F0012C1DA /* loading.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

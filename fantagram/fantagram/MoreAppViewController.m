@@ -158,7 +158,7 @@
     NSDictionary *appDic = [[[self.moreAppArray objectAtIndex:indexPath.section] objectForKey:@"Apps"] objectAtIndex:indexPath.row];
     
     NSURL *appIconURL = [NSURL URLWithString:[appDic objectForKey:@"iconURL"]];
-    UIImage *placeholderImage = [UIImage imageNamed:@"sample.jpg"];
+    UIImage *placeholderImage = [UIImage imageNamed:@"loading.png"];
     [cell.iconImageView setImageWithURL:appIconURL placeholderImage:placeholderImage];
     NSURLRequest *request = [NSURLRequest requestWithURL:appIconURL];
     
